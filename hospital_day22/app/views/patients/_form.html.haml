@@ -1,6 +1,6 @@
 -if @patient.errors.any?
-  = flash[:error]
-  %br
+  %p{class: "flash"}
+    = flash[:error]
   %br
 = form_for([@clinic, @patient]) do |f|
   - if @patient.errors.any?
@@ -10,9 +10,13 @@
 = form_for [@clinic, @patient] do |f|
   %strong= f.label :first_name
   = f.text_field :first_name, class: "name_field"
+  %span.error_first_name
+    First name required
   %br/
   %strong= f.label :last_name
   = f.text_field :last_name, class: "name_field"
+  %span.error_last_name
+    Last name required
   %br/
   %strong= f.label :date_of_birth
   = f.date_field :date_of_birth, :start_year => Date.today.year - 110, :end_year => Date.today.year
