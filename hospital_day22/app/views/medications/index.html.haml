@@ -1,0 +1,32 @@
+= form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
+    .input-group-btn
+      %button.btn.btn-default{:style => "width:40px;"}
+        %i.glyphicon.glyphicon-search
+
+.col-md-12
+  .col-md-4.col-md-offset-4
+    .jumbotron
+      .text-center
+        %strong
+          %h3
+            %u
+              Medications
+          = link_to "Add New Medication", new_medication_path
+.row          
+  - @medications.each do |medication|
+    .col-md-4.text-center
+      .list-group-item
+        %strong 
+          Medication Name:
+        = link_to medication.name, medication_path(medication)
+        %br/
+        %strong 
+          Company:
+        = medication.company
+        %br
+        = link_to "Edit Medication", edit_medication_path(medication)
+        |
+        \#{link_to "Delete Medication", medication_path(medication), method: :delete}
+      %br
