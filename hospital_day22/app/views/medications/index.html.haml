@@ -4,7 +4,6 @@
     .input-group-btn
       %button.btn.btn-default{:style => "width:40px;"}
         %i.glyphicon.glyphicon-search
-
 .col-md-12
   .col-md-4.col-md-offset-4
     .jumbotron
@@ -14,19 +13,33 @@
             %u
               Medications
           = link_to "Add New Medication", new_medication_path
-.row          
-  - @medications.each do |medication|
-    .col-md-4.text-center
-      .list-group-item
-        %strong 
-          Medication Name:
-        = link_to medication.name, medication_path(medication)
-        %br/
-        %strong 
-          Company:
-        = medication.company
+.row
+- x = 0
+- y = 1
+%ul{class: "medication_list"}     
+  - @medications.each_slice(10) do |row|
+    %li{class: "section_#{x+1}"}
+      - x = x + 1
+      - row.each do |medication|
+        .col-md-2.col-md-offset-5
+          = medication[:name]
         %br
-        = link_to "Edit Medication", edit_medication_path(medication)
-        |
-        \#{link_to "Delete Medication", medication_path(medication), method: :delete}
-      %br
+      %br 
+  = x
+  %br
+- x.times do
+  %a{class: "link_#{y}"} 
+    = "page #{y}"
+  = "|"
+  - y += 1
+%br
+%br
+
+
+
+
+
+
+
+
+

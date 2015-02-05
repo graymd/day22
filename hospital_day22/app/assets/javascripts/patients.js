@@ -1,20 +1,19 @@
 $(document).ready(function(){
-  // $('.submit').prop('disabled', true);
+  $('.submit').prop('disabled', true);
 
-  // need better event select
-  // $('.name_field').mouseleave(function(){
-  //   var first_name = $(".name_field:first").val();
-  //   var last_name = $(".name_field:last").val();
-  //   if (first_name != "" || last_name != "") {
-  //     $('.submit').prop('disabled', false);
-  //   }
-  //   if (first_name == "" || last_name == "") {
-  //     $('.submit').prop('disabled', true);
-  //   }
-  // })
+  $('.name_field').mouseleave(function(){
+    var first_name = $(".name_field:first").val();
+    var last_name = $(".name_field:last").val();
+    if (first_name != "" || last_name != "") {
+      $('.submit').prop('disabled', false);
+    }
+    if (first_name == "" || last_name == "") {
+      $('.submit').prop('disabled', true);
+    }
+  })
 
-  // $(".flash").fadeOut(10000);
-  // need to figure out better event
+  $(".flash").fadeOut(10000);
+
   $('.name_field').keyup(function(){
     var first_name = $(".name_field:first").val();
     var last_name = $(".name_field:last").val();
