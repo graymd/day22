@@ -22,16 +22,17 @@
       - x = x + 1
       - row.each do |medication|
         .col-md-2.col-md-offset-5
-          = medication[:name]
+          = link_to medication[:name], medication_path(medication)
         %br
       %br 
   = x
   %br
-- x.times do
-  %a{class: "link_#{y}"} 
-    = "page #{y}"
-  = "|"
-  - y += 1
+%ul{class: "link_list"}
+  - x.times do
+    %li{class: "link_#{y}"}
+      %a{class: "link_#{y}", med_num: y} 
+        = "page #{y}"
+    - y += 1
 %br
 %br
 
