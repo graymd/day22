@@ -79,7 +79,13 @@
       .text-center
         .h4
           %strong Patient Doctor(s) Name:
-      %br
+        = form_tag clinic_patient_path(@clinic, @patient), method: :get, class: "navbar-form", role: "search" do
+          .input-group
+            = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Doctors"
+            .input-group-btn
+              %button.btn.btn-default{:style => "width:40px;"}
+                %i.glyphicon.glyphicon-search
+      %br          
       %ul
         - @doctors.each do |doctor|
           %li

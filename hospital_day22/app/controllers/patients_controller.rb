@@ -21,7 +21,11 @@ class PatientsController < ApplicationController
    @patient = Patient.find params[:id]
    @medications = @patient.medications
    @doctor = Doctor.new
-   @doctors = @patient.doctors
+   @doctors = if !params[:q].blank?
+    @patient.doctors.where("doctor_name LIKE ?", "%#{params[:q]}%")
+   else
+    @patient.doctors
+    end
   end
 
 
