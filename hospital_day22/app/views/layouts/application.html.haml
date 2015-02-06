@@ -40,6 +40,12 @@
         / /.nav-collapse
     / Begin page content
     .container
+      - if notice
+        .alert.alert-success{ role: "alert"}
+          = notice
+      - if alert
+        .alert.alert-danger{ role: "alert"}
+          = alert
       = yield
     /
       Bootstrap core JavaScript

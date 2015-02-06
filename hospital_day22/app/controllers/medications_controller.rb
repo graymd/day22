@@ -24,8 +24,16 @@ class MedicationsController < ApplicationController
   end
 
   def create
+    @patients = Patient.all
     @medication = Medication.create medication_params
-    redirect_to medications_path
+    if @medication.save
+      flash[:notice] = "Medication was successfully saved."
+      redirect_to medications_path
+    else
+      flash[:alert] = "Medication was NOT successfully saved."
+      render :new
+    end
+
   end
 
   def edit
@@ -34,9 +42,15 @@ class MedicationsController < ApplicationController
   end
 
   def update
+    @patients = Patient.all
     @medication = Medication.find params[:id]
-    @medication.update medication_params
-    redirect_to medication_path(@medication)
+    if @medication.update medication_params
+      flash[:notice] = "Medication was successfully updated."
+      redirect_to medication_path(@medication)
+    else
+      flash[:alert] = "Medication was NOT successfully updated."
+      render :edit
+    end
   end
 
   def destroy

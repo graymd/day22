@@ -1,3 +1,8 @@
+fix patient clinic_id in rake create_date.
+
+
+
+
 3 Feb 2015
 
 -Check out Will H's helper method to make single if method on workflow_state.

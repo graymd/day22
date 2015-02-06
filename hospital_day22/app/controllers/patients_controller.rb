@@ -39,7 +39,7 @@ class PatientsController < ApplicationController
       flash[:notice] = 'Patient info was successfully saved.'
       redirect_to clinic_path(@clinic)
     else
-      flash[:error] = 'Patient info was NOT successfully saved.'
+      flash[:alert] = 'Patient info was NOT successfully saved.'
       render :new
     end
   end
@@ -58,7 +58,7 @@ class PatientsController < ApplicationController
       flash[:notice] = 'Patient info was successfully updated.'
       redirect_to clinic_path(@clinic)
     else
-      flash[:error] = 'Patient info was NOT successfully updated.'
+      flash[:alert] = 'Patient info was NOT successfully updated.'
       render :edit
     end
   end
@@ -70,7 +70,7 @@ class PatientsController < ApplicationController
       flash[:notice] = 'Patient info was successfully deleted.'
       redirect_to clinic_path(@clinic)
     else
-      flash[:error] = 'Patient info was NOT successfully deleted.'
+      flash[:alert] = 'Patient info was NOT successfully deleted.'
     end
   end
 

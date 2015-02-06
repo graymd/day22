@@ -1,26 +1,54 @@
-%p#notice= notice
-
 = form_tag clinic_patients_path, method: :get, class: "navbar-form", role: "search" do
   .input-group
-    = text_field_tag 'q', params[:q], class: "form_control", id: "srch-term", placeholder: "Search Patients"
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Patients"
     .input-group-btn
       %button.btn.btn-default{:style => "width:40px;"}
         %i.glyphicon.glyphicon-search
+.col-md-12
+  .col-md-6.col-md-offset-3
+    .jumbotron
+      .text-center
+        %strong
+          %h3
+            %u
+              = "Patients at Clinic: #{@clinic.name}"
+          = link_to "Return to Clinic", clinic_path(@clinic)
 
+/ %ul
+/   - @patients.each do |patient|
+/     .col-md-4.text-center
+/       .list-group-item
+/         %li
+/           = link_to patient.first_name + ' ' + patient.last_name, clinic_patient_path(@clinic, patient)
+/           = '|'
+/           = workflow_state_helper(patient)
+/         %br
+/       %br  
 
-%h1
-  = "Patients at Hospital: #{@clinic.name}"
+.row
+- x = 0
+- y = 1
+%ul{class: "patient_list"}     
+  - @patients.each_slice(10) do |row|
+    %li{class: "section_#{x+1}"}
+      - x = x + 1
+      - row.each do |patient|
+        .col-md-3
+          .list-group-item
+            = link_to (patient[:last_name] + ', ' + patient[:first_name]), clinic_patient_path(@clinic, patient)
+          %br
+      %br 
+    %br
+.col-md-12.text-center
+  %ul{class: "link_list" }
+    - x.times do
+      %li{class: "link_#{y}"}
+        %a{class: "link_#{y}", patient_num: y} 
+          = "page #{y}"
+        = "|"
+      - y += 1
 %br
 %br
-%ul
-  Patient Names:
-  %br
-  %br
-  - @patients.each do |patient|
-    %li
-      = link_to patient.first_name + ' ' + patient.last_name, clinic_patient_path(@clinic, patient)
-
-
 
 
 

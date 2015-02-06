@@ -12,7 +12,8 @@ $(document).ready(function(){
     }
   })
 
-  $(".flash").fadeOut(10000);
+  $(".alert").fadeOut(5000);
+  $(".notice").fadeOut(5000);
 
   $('.name_field').keyup(function(){
     var first_name = $(".name_field:first").val();
@@ -30,6 +31,19 @@ $(document).ready(function(){
       $('.error_last_name').show();
     }
   })
+
+  $('ul.patient_list > li').hide();
+  $('li.section_1').show();
+
+$("ul.link_list > li > a").click(function() {
+  $("ul.patient_list > li").hide();
+  var patient_list = $(this).attr("patient_num");
+  $("li.section_" + patient_list).show();
+})  
+
+
+
+
 });
 
 

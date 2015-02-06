@@ -7,7 +7,7 @@
 
 
 .col-md-12
-  .col-md-4.col-md-offset-4
+  .col-md-6.col-md-offset-3
     .jumbotron
       .text-center
         %strong
@@ -18,15 +18,52 @@
           = link_to "Add New Clinic", new_clinic_path
           %br
 / %p{class: "text-left"}
+/ .row
+/   - @clinics.each do |clinic|
+/     .col-md-4.text-center
+/       .list-group-item
+/         = link_to clinic.name, clinic_path(clinic)
+/         %br
+/         = link_to "Edit Clinic", edit_clinic_path(clinic)
+/         |
+/         = link_to "Delete Clinic", clinic_path(clinic), method: :delete
+/       %br
 .row
-  - @clinics.each do |clinic|
-    .col-md-4.text-center
-      .list-group-item
-        %strong
-          Clinic Name:
-        = link_to clinic.name, clinic_path(clinic)
-        %br
-        = link_to "Edit Clinic", edit_clinic_path(clinic)
-        |
-        = link_to "Delete Clinic", clinic_path(clinic), method: :delete
-      %br
+- x = 0
+- y = 1
+%ul{class: "clinic_list"}     
+  - @clinics.each_slice(10) do |row|
+    %li{class: "section_#{x+1}"}
+      - x = x + 1
+      - row.each do |clinic|
+        .col-md-4.text-center
+          .list-group-item
+            = link_to clinic[:name], clinic_path(clinic)
+            %br
+            = clinic[:city]
+            = ', '
+            = clinic[:state]
+            %br
+            = link_to "Click for patients", clinic_patients_path(clinic)
+          %br
+      %br 
+    %br
+.col-md-12.text-center
+  %ul{class: "link_list" }
+    - x.times do
+      %li{class: "link_#{y}"}
+        %a{class: "link_#{y}", clinic_num: y} 
+          = "page #{y}"
+        = "|"
+      - y += 1
+%br
+%br
+
+
+
+
+
+
+
+
+

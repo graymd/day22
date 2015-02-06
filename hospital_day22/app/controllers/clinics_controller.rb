@@ -28,7 +28,13 @@ class ClinicsController < ApplicationController
 
   def create
     @clinic = Clinic.create my_params
-    redirect_to clinics_path
+    if @clinic.save
+      flash[:notice] = "Clinic info was successfully saved."
+      redirect_to clinics_path
+    else
+      flash[:alert] = "Clinic info was NOT successfully saved."
+      render :new
+    end
   end
 
   def edit
@@ -37,8 +43,13 @@ class ClinicsController < ApplicationController
 
   def update
     @clinic = Clinic.find params[:id]
-    @clinic.update my_params
-    redirect_to clinic_path(@clinic)
+    if @clinic.update my_params
+      flash[:notice] = "Clinic info successfully updated."
+      redirect_to clinic_path(@clinic)
+    else
+      flash[:alert] = "Clinic info was NOT successfully updated."
+      render :edit
+    end
   end
 
   def destroy
