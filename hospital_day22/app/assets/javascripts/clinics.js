@@ -10,9 +10,6 @@ $(document).ready(function(){
     }
   })
 
-
-
-
   $('ul.clinic_list > li').hide();
   $('li.section_1').show();
 
@@ -22,7 +19,13 @@ $(document).ready(function(){
     $('li.section_' + clinic_list).show();
   })
 
-$('.name_field').keyup(function(){
+  var name = $(".name_field").val();
+  if (name != "") {
+    $('.error_name').hide();
+  }
+
+
+  $('.name_field').keyup(function(){
     var name = $(".name_field").val();
     if (name != "") {
       $('.error_name').hide();

@@ -1,3 +1,11 @@
+6 FEB 2015
+
+-need to add doctor search on patient show page.
+
+-cleaned up jquery "name must be entered" function.  No longer shows on edit page if data was already entered.
+
+-fixed rake create_data to include 100 pieces of data for patients, medications, clinics, and doctors.
+-----------------------------------------------------------------------------------------------
 5 FEB 2015
 
 -finish jquery work from 4 Feb.  Work on cleaning formatting.
