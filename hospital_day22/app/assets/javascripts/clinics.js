@@ -1,4 +1,18 @@
 $(document).ready(function(){
+  $('.submit').prop('disabled', true);
+  $('.name_field').change(function(){
+    var name = $(".name_field").val();
+    if (name != "") {
+      $('.submit').prop('disabled', false);
+    }
+    if (name == "") {
+      $('.submit').prop('disabled', true);
+    }
+  })
+
+
+
+
   $('ul.clinic_list > li').hide();
   $('li.section_1').show();
 
@@ -7,7 +21,15 @@ $(document).ready(function(){
     var clinic_list = $(this).attr('clinic_num')
     $('li.section_' + clinic_list).show();
   })
-})
 
-  $('ul.patient_list > li').hide();
-  $('li.section_1').show();
+$('.name_field').keyup(function(){
+    var name = $(".name_field").val();
+    if (name != "") {
+      $('.error_name').hide();
+    }
+    else {
+      $('.error_name').show();
+    }
+  })
+
+})

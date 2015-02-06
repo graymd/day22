@@ -8,5 +8,14 @@ $("ul.link_list > li > a").click(function() {
   $("li.section_" + medication_list).show();
 })  
 
+$('.name_field').keyup(function(errorNameCheck){
+    var name = $(".name_field").val();
+    if (name != "") {
+      $('.error_name').hide();
+    }
+    else {
+      $('.error_name').show();
+    }
+  })
 
 })

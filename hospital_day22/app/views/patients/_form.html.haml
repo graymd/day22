@@ -36,6 +36,6 @@
         = check_box_tag 'patient[medication_ids][]', medication.id, @patient.medications.include?(medication)
         = medication.name
     %br/
-  = f.submit class: "Submit", class: "btn btn-primary"
+  = f.submit "Submit", class: "btn btn-primary submit"
 = link_to "Cancel", clinic_path(@clinic)
 = link_to "Return to Main", root_path

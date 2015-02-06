@@ -1,6 +1,13 @@
-fix patient clinic_id in rake create_date.
+5 FEB 2015
+
+-finish jquery work from 4 Feb.  Work on cleaning formatting.
 
 
+- Need to fix patient clinic_id in rake create_date.
+
+4 FEB 2015
+
+-worked on jquery for flash message fadeout. disable of submit button if name is not entered. pagination (figured out use of each_slice ruby method.)
 
 
 3 Feb 2015
@@ -10,12 +17,6 @@ fix patient clinic_id in rake create_date.
 -look at creating into one single controller for workflow_state
 
 -added search functionality to clinics, medications, patients?? and doctors??
-  -need to fix the outline to be correct
-
--need to change the generic option to show yes, no
-
--add patients index link to clinic.
-
 -
 
 -------------------------------------------------------------------------

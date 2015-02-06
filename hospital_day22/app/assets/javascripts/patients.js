@@ -1,7 +1,6 @@
 $(document).ready(function(){
   $('.submit').prop('disabled', true);
-
-  $('.name_field').mouseleave(function(){
+  $('.name_field').change(function(){
     var first_name = $(".name_field:first").val();
     var last_name = $(".name_field:last").val();
     if (first_name != "" || last_name != "") {

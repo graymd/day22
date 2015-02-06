@@ -1,8 +1,15 @@
+= form_for([@medication]) do |f|
+  - if @medication.errors.any?
+    - @medication.errors.full_messages.each do |message|
+      = message
+      %br
 .list-group-item.text-center
   =form_for [@medication] do |f|
     .form-group
       = f.label :name
-      = f.text_field :name, class: "form-control"
+      = f.text_field :name, class: "form-control name_field"
+      %span.error_name
+        Medication name required
     .form-group
       = f.label :company
       = f.text_field :company, class: "form-control"
@@ -27,4 +34,4 @@
               = patient.last_name + ', ' + patient.first_name
             %br
     %br
-    = f.submit "Submit", class: "btn btn-primary"
+    = f.submit "Submit", class: "btn btn-primary submit"
